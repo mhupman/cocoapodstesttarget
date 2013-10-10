@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "AppDelegate.h"
+#import <RestKit/Testing.h>
 
 @interface cocoapodstesttargetTests : XCTestCase
 
@@ -26,9 +28,17 @@
     [super tearDown];
 }
 
+
+
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    RKObjectMapping* mine = [[RKObjectMapping alloc] init];
+    
+    RKObjectMapping* mine2 = [[RKObjectMapping alloc] init];
+    
+    XCTAssertTrue([mine isKindOfClass:[mine2 class]], @"These two should be the same class!");
+    
+    XCTAssertTrue([[AppDelegate rkObjectMapping] isKindOfClass:[mine class]], @"These two should be the same class as well!");
 }
 
 @end
